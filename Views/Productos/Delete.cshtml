@@ -1,0 +1,33 @@
+@model EasyStock.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar producto";
+}
+
+<h2> Eliminar producto</h2>
+
+<div class="alert alert-warning">
+    ¿Estás segura de que deseas eliminar este producto?
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.Nombre</h4>
+
+        <p><strong>Descripción:</strong> @Model.Descripcion</p>
+        <p><strong>Precio:</strong> $@Model.Precio.ToString("N2")</p>
+        <p><strong>Stock:</strong> @Model.Stock</p>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn btn-danger">
+                Sí, eliminar
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancelar
+            </a>
+        </form>
+    </div>
+</div>
